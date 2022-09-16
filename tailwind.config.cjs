@@ -2,6 +2,7 @@
 module.exports = {
   content: ["./src/**/*.tsx", "./index.html"],
   theme: {
+    fontFamily: ['Inter', 'sans-serif'],
     extend: {
       backgroundImage: {
         "nlw-gradient":
