@@ -2,6 +2,7 @@ import "./styles/main.css";
 import logoImg from "./assets/logo-esports-nlw.svg";
 import { GameList } from "./modules/games/pages/GameList";
 import { Banner } from "./components/Banner";
+
 function App() {
   return (
     <>
