@@ -3,7 +3,7 @@ import { GameBannerProps } from "../interfaces/game-banner.interface";
 export function GameBanner(props: GameBannerProps) {
   const getAdsCount = (adsCount: number) => {
     if (!adsCount) {
-      throw new Error("Invalid amount ads");
+      return `Sem anúncios`;
     }
     if (adsCount > 1) {
       return `${adsCount} anúncios`;
