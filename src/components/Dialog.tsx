@@ -13,7 +13,7 @@ export function RadixDialog(props: RadixDialogProps) {
         <Dialog.Title className="text-3xl font-black">
           {props.title}
         </Dialog.Title>
-        <Dialog.Content {...props}></Dialog.Content>
+        {props.children}
       </Dialog.Content>
     </Dialog.Portal>
   );
