@@ -3,13 +3,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { RadixDialog } from "../../../../components/Dialog";
 import { AdsCreateForm } from "../AdsCreateForm/AdsCreateForm";
 
-interface BannerProps {
-  title: string;
-  subtitle: string;
-  button: {
-    label: string;
-  };
-}
 export function AdsGameBanner() {
   return (
     <div className="pt-1 bg-nlw-gradient self-stretch rounded-lg  mt-8 overflow-hidden">
