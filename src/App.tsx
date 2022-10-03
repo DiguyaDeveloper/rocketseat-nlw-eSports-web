@@ -1,7 +1,7 @@
 import "./styles/main.css";
 import logoImg from "./assets/logo-esports-nlw.svg";
 import { GameList } from "./modules/games/pages/GameList";
-import { AdsGameBanner } from "./modules/ads/components/AdsGameBanner";
+import { AdsGameBanner } from "./modules/ads/components/AdsGameBanner/AdsGameBanner";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 import { MagnifyingGlassPlus } from "phosphor-react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { RadixDialog } from "../../../components/Dialog";
-import { AdsCreateForm } from "./AdsCreateForm";
+import { RadixDialog } from "../../../../components/Dialog";
+import { AdsCreateForm } from "../AdsCreateForm/AdsCreateForm";
 
 interface BannerProps {
   title: string;
