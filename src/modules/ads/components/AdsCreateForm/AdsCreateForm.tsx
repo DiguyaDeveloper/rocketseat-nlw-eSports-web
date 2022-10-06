@@ -6,44 +6,8 @@ import { Input } from "../../../../components/Input/Input";
 import { RadixSelect } from "../../../../components/select/Select";
 import { useEffect, useState } from "react";
 import { Game } from "../../../games/interfaces/game.interface";
-
-const weekDays: { title: string; value: string; day: number }[] = [
-  {
-    title: "Domingo",
-    value: "D",
-    day: 1,
-  },
-  {
-    title: "Segunda",
-    value: "S",
-    day: 2,
-  },
-  {
-    title: "Terça",
-    value: "T",
-    day: 3,
-  },
-  {
-    title: "Quarta",
-    value: "Q",
-    day: 4,
-  },
-  {
-    title: "Quinta",
-    value: "Q",
-    day: 5,
-  },
-  {
-    title: "Sexta",
-    value: "S",
-    day: 6,
-  },
-  {
-    title: "Sabado",
-    value: "S",
-    day: 7,
-  },
-];
+import { RadixMultipleToggleGroup } from "../../../../components/multiple-toggle-group/MultipleToggleGroup";
+import { weekDaysConstant } from "../../../../shared/constants/week-days.constant";
 
 export function AdsCreateForm() {
   const [selectedGame, setSelectedGame] = useState<string>();
@@ -99,22 +63,16 @@ export function AdsCreateForm() {
         <div className="flex flex-col gap-2">
           <label htmlFor="weekDays">Quando costuma jogar?</label>
 
-          <ToggleGroup.Root type="multiple" className="grid grid-cols-2 gap-2">
-            {weekDays.map(
-              (weekDay: { title: string; value: string; day: number }) => {
-                return (
-                  <ToggleGroup.Item
-                    key={weekDay.day}
-                    value={String(weekDay.day)}
-                    title={weekDay.title}
-                    className="w-8 h-8 rounded bg-zinc-900"
-                  >
-                    {weekDay.value}
-                  </ToggleGroup.Item>
-                );
-              }
-            )}
-          </ToggleGroup.Root>
+          <RadixMultipleToggleGroup
+            onValueChange={() => {}}
+            items={weekDaysConstant.map(({ title, value }) => {
+              return { title, value };
+            })}
+          />
+          <ToggleGroup.Root
+            type="multiple"
+            className="grid grid-cols-2 gap-2"
+          ></ToggleGroup.Root>
         </div>
         <div className="flex flex-col gap-2 flex-1">
           <label htmlFor="weekDays">Qual horário do dia?</label>
