@@ -2,6 +2,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as Checkbox from "@radix-ui/react-checkbox";
 import { Check, GameController } from "phosphor-react";
 import { Input } from "../../../../components/Input/Input";
+import { RadixSelect } from "../../../../components/select/Select";
+import { useState } from "react";
 
 const weekDays: { title: string; value: string; day: number }[] = [
   {
@@ -42,13 +44,30 @@ const weekDays: { title: string; value: string; day: number }[] = [
 ];
 
 export function AdsCreateForm() {
+  const [selectedGame, setSelectedGame] = useState<string>();
   return (
     <form className="mt-8 flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <label htmlFor="game" className="font-semibold">
           Qual o game?
         </label>
-        <Input id="game" placeholder="Selecione o game que deseja jogar" />
+        <RadixSelect
+          id="game"
+          placeholder="Selecione o game que deseja jogar"
+          aria-label="games"
+          onValueChange={setSelectedGame}
+          items={[
+            { label: "Game1", value: "1" },
+            { label: "Game2", value: "2" },
+            { label: "Game3", value: "3" },
+            { label: "Game4", value: "4" },
+            { label: "Game5", value: "5" },
+            { label: "Game6", value: "6" },
+            { label: "Game7", value: "7" },
+            { label: "Game8", value: "8" },
+            { label: "Game9", value: "9" },
+          ]}
+        ></RadixSelect>
       </div>
 
       <div>
@@ -75,6 +94,7 @@ export function AdsCreateForm() {
               (weekDay: { title: string; value: string; day: number }) => {
                 return (
                   <button
+                    key={weekDay.day}
                     title={weekDay.title}
                     className="w-8 h-8 rounded bg-zinc-900"
                   >
