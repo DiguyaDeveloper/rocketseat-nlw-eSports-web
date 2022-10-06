@@ -1,5 +1,4 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { GameController } from "phosphor-react";
 import { Input } from "../../../../components/Input/Input";
 import { RadixSelect } from "../../../../components/select/Select";
