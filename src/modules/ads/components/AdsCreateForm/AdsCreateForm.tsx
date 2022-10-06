@@ -1,13 +1,13 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import * as Checkbox from "@radix-ui/react-checkbox";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
-import { Check, GameController } from "phosphor-react";
+import { GameController } from "phosphor-react";
 import { Input } from "../../../../components/Input/Input";
 import { RadixSelect } from "../../../../components/select/Select";
 import { useEffect, useState } from "react";
 import { Game } from "../../../games/interfaces/game.interface";
 import { RadixMultipleToggleGroup } from "../../../../components/multiple-toggle-group/MultipleToggleGroup";
 import { weekDaysConstant } from "../../../../shared/constants/week-days.constant";
+import { RadixCheckbox } from "../../../../components/checkbox/Checkbox";
 
 export function AdsCreateForm() {
   const [selectedGame, setSelectedGame] = useState<string>();
@@ -83,14 +83,10 @@ export function AdsCreateForm() {
         </div>
       </div>
 
-      <label className="mt-2 flex items-center gap-2 text-sm cursor-pointer">
-        <Checkbox.Root className="w-6 h-6 p-1 rounded bg-zinc-900">
-          <Checkbox.Indicator>
-            <Check className="w-4 h-4 text-emerald-400"></Check>
-          </Checkbox.Indicator>
-        </Checkbox.Root>
-        Costumo me conectar ao chat de voz
-      </label>
+      <RadixCheckbox
+        className="mt-2"
+        title="Costumo me conectar ao chat de voz"
+      />
 
       <footer className="mt-4 flex justify-end gap-4">
         <Dialog.Close
