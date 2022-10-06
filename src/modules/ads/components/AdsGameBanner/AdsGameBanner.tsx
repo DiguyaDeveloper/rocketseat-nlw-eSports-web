@@ -1,6 +1,6 @@
 import { MagnifyingGlassPlus } from "phosphor-react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { RadixDialog } from "../../../../components/Dialog";
+import { RadixDialog } from "../../../../components/dialog/Dialog";
 import { AdsCreateForm } from "../AdsCreateForm/AdsCreateForm";
 
 export function AdsGameBanner() {
