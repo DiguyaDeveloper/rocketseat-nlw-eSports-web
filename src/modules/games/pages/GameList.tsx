@@ -1,14 +1,6 @@
 import { useEffect, useState } from "react";
 import { GameBanner } from "../components/GameBanner";
-
-interface Game {
-  id: string;
-  title: string;
-  bannerUrl: string;
-  _count: {
-    Ads: number;
-  };
-}
+import { Game } from "../interfaces/game.interface";
 
 export function GameList() {
   const [games, setGames] = useState<Game[]>([]);
