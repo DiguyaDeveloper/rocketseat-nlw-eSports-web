@@ -1,16 +1,13 @@
 import { useEffect, useState } from "react";
 import { GameBanner } from "../components/GameBanner";
 import { Game } from "../interfaces/game.interface";
+import GamesService from "../services/Games.service";
 
 export function GameList() {
   const [games, setGames] = useState<Game[]>([]);
 
   const getGames = (): void => {
-    fetch("http://localhost:3333/games")
-      .then((response) => response.json())
-      .then((data: Game[]) => {
-        setGames(data);
-      });
+    GamesService.getGames().then((games: Game[]) => setGames(games));
   };
 
   useEffect(getGames, []);

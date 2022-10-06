@@ -7,6 +7,7 @@ import { Game } from "../../../games/interfaces/game.interface";
 import { RadixMultipleToggleGroup } from "../../../../components/multiple-toggle-group/MultipleToggleGroup";
 import { weekDaysConstant } from "../../../../shared/constants/week-days.constant";
 import { RadixCheckbox } from "../../../../components/checkbox/Checkbox";
+import GamesService from "../../../games/services/Games.service";
 
 export function AdsCreateForm() {
   const [games, setGames] = useState<Game[]>([]);
@@ -14,15 +15,9 @@ export function AdsCreateForm() {
   const [weekDays, setWeekDays] = useState<string[]>();
   const [useVoiceChannel, setUseVoiceChannel] = useState<boolean>(false);
 
-  const getGames = (): void => {
-    fetch("http://localhost:3333/games")
-      .then((response) => response.json())
-      .then((data: Game[]) => {
-        setGames(data);
-      });
-  };
-
-  useEffect(getGames, []);
+  useEffect(() => {
+    GamesService.getGames().then((games: Game[]) => setGames(games));
+  }, []);
 
   const handleCreateAds = (event: FormEvent) => {
     event.preventDefault();
