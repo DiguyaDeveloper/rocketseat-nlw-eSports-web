@@ -27,7 +27,9 @@ export function RadixMultipleToggleGroup({
             key={index}
             value={item.value}
             title={item.title}
-            className="w-8 h-8 rounded bg-zinc-900"
+            className={`w-8 h-8 rounded bg-zinc-900 ${
+              values?.includes(item.value) && "bg-violet-500"
+            }`}
           >
             {item.label}
           </ToggleGroup.Item>
