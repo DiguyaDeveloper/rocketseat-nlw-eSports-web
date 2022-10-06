@@ -70,10 +70,6 @@ export function AdsCreateForm() {
               return { title, value, label };
             })}
           />
-          <ToggleGroup.Root
-            type="multiple"
-            className="grid grid-cols-2 gap-2"
-          ></ToggleGroup.Root>
         </div>
         <div className="flex flex-col gap-2 flex-1">
           <label htmlFor="weekDays">Qual horário do dia?</label>
