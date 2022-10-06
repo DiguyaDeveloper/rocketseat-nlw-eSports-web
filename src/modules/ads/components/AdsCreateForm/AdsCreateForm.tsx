@@ -1,9 +1,11 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Checkbox from "@radix-ui/react-checkbox";
+import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { Check, GameController } from "phosphor-react";
 import { Input } from "../../../../components/Input/Input";
 import { RadixSelect } from "../../../../components/select/Select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { Game } from "../../../games/interfaces/game.interface";
 
 const weekDays: { title: string; value: string; day: number }[] = [
   {
@@ -45,6 +47,18 @@ const weekDays: { title: string; value: string; day: number }[] = [
 
 export function AdsCreateForm() {
   const [selectedGame, setSelectedGame] = useState<string>();
+  const [games, setGames] = useState<Game[]>([]);
+
+  const getGames = (): void => {
+    fetch("http://localhost:3333/games")
+      .then((response) => response.json())
+      .then((data: Game[]) => {
+        setGames(data);
+      });
+  };
+
+  useEffect(getGames, []);
+
   return (
     <form className="mt-8 flex flex-col gap-4">
       <div className="flex flex-col gap-2">
@@ -56,17 +70,12 @@ export function AdsCreateForm() {
           placeholder="Selecione o game que deseja jogar"
           aria-label="games"
           onValueChange={setSelectedGame}
-          items={[
-            { label: "Game1", value: "1" },
-            { label: "Game2", value: "2" },
-            { label: "Game3", value: "3" },
-            { label: "Game4", value: "4" },
-            { label: "Game5", value: "5" },
-            { label: "Game6", value: "6" },
-            { label: "Game7", value: "7" },
-            { label: "Game8", value: "8" },
-            { label: "Game9", value: "9" },
-          ]}
+          items={games.map((game) => {
+            return {
+              label: game.title,
+              value: game.id,
+            };
+          })}
         ></RadixSelect>
       </div>
 
@@ -89,21 +98,23 @@ export function AdsCreateForm() {
       <div className="flex gap-6">
         <div className="flex flex-col gap-2">
           <label htmlFor="weekDays">Quando costuma jogar?</label>
-          <div className="grid grid-cols-2 gap-2">
+
+          <ToggleGroup.Root type="multiple" className="grid grid-cols-2 gap-2">
             {weekDays.map(
               (weekDay: { title: string; value: string; day: number }) => {
                 return (
-                  <button
+                  <ToggleGroup.Item
                     key={weekDay.day}
+                    value={String(weekDay.day)}
                     title={weekDay.title}
                     className="w-8 h-8 rounded bg-zinc-900"
                   >
                     {weekDay.value}
-                  </button>
+                  </ToggleGroup.Item>
                 );
               }
             )}
-          </div>
+          </ToggleGroup.Root>
         </div>
         <div className="flex flex-col gap-2 flex-1">
           <label htmlFor="weekDays">Qual horário do dia?</label>
@@ -120,7 +131,6 @@ export function AdsCreateForm() {
             <Check className="w-4 h-4 text-emerald-400"></Check>
           </Checkbox.Indicator>
         </Checkbox.Root>
-        <Input type="checkbox" />
         Costumo me conectar ao chat de voz
       </div>
 
