@@ -65,8 +65,8 @@ export function AdsCreateForm() {
 
           <RadixMultipleToggleGroup
             onValueChange={() => {}}
-            items={weekDaysConstant.map(({ title, value }) => {
-              return { title, value };
+            items={weekDaysConstant.map(({ title, label, value }) => {
+              return { title, value, label };
             })}
           />
           <ToggleGroup.Root
