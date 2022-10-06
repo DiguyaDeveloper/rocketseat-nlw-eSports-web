@@ -83,14 +83,14 @@ export function AdsCreateForm() {
         </div>
       </div>
 
-      <div className="mt-2 flex items-center gap-2 text-sm">
+      <label className="mt-2 flex items-center gap-2 text-sm cursor-pointer">
         <Checkbox.Root className="w-6 h-6 p-1 rounded bg-zinc-900">
           <Checkbox.Indicator>
             <Check className="w-4 h-4 text-emerald-400"></Check>
           </Checkbox.Indicator>
         </Checkbox.Root>
         Costumo me conectar ao chat de voz
-      </div>
+      </label>
 
       <footer className="mt-4 flex justify-end gap-4">
         <Dialog.Close
