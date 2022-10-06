@@ -8,11 +8,13 @@ import { RadixMultipleToggleGroup } from "../../../../components/multiple-toggle
 import { weekDaysConstant } from "../../../../shared/constants/week-days.constant";
 import { RadixCheckbox } from "../../../../components/checkbox/Checkbox";
 import GamesService from "../../../games/services/Games.service";
+import { CreateGameAds } from "../../interface/create-game-ads.interface";
+import AdsService from "../../services/Ads.service";
 
 export function AdsCreateForm() {
   const [games, setGames] = useState<Game[]>([]);
-  const [selectedGame, setSelectedGame] = useState<string>();
-  const [weekDays, setWeekDays] = useState<string[]>();
+  const [selectedGame, setSelectedGame] = useState<string>("");
+  const [weekDays, setWeekDays] = useState<string[]>([]);
   const [useVoiceChannel, setUseVoiceChannel] = useState<boolean>(false);
 
   useEffect(() => {
@@ -23,10 +25,27 @@ export function AdsCreateForm() {
     event.preventDefault();
 
     const formData = new FormData(event.target as HTMLFormElement);
-    console.log("formData", Object.fromEntries(formData));
-    console.log("selectedGame", selectedGame);
-    console.log("weekDays", weekDays);
-    console.log("useVoiceChannel", useVoiceChannel);
+    const data = Object.fromEntries(formData);
+
+    createGameAds({
+      name: String(data.name),
+      yearPlaying: Number(data.yearsPlaying),
+      discord: String(data.discord),
+      weekDays: weekDays.map(Number),
+      hourStart: String(data.hourStart),
+      hourEnd: String(data.hourEnd),
+      useVoiceChannel: useVoiceChannel,
+    });
+  };
+
+  const createGameAds = (body: CreateGameAds) => {
+    AdsService.createGameAds(selectedGame, body)
+      .then(() => {
+        alert("Sucesso ao criar anúncio");
+      })
+      .catch((err) => {
+        alert("Erro ao criar anúncio");
+      });
   };
 
   return (
