@@ -64,6 +64,7 @@ export function AdsCreateForm() {
           <label htmlFor="weekDays">Quando costuma jogar?</label>
 
           <RadixMultipleToggleGroup
+            id="weekDays"
             onValueChange={() => {}}
             items={weekDaysConstant.map(({ title, label, value }) => {
               return { title, value, label };

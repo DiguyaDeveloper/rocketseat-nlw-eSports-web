@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { InputHTMLAttributes, useState } from "react";
 import * as ToggleGroup from "@radix-ui/react-toggle-group";
 
-interface ToggleGroupProps {
+interface ToggleGroupProps extends InputHTMLAttributes<HTMLInputElement> {
   items: { value: string; title: string; label: string }[];
   onValueChange: (value: string[]) => void;
 }
